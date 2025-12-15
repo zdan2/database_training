@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>保育園マスタ</h1>
+
+<button hx-post="/import/nurseries" hx-target="#area" hx-swap="innerHTML">
+  スプシから取り込み
+</button>
+
+<div id="area" hx-get="/nurseries/list" hx-trigger="load" hx-swap="innerHTML"></div>
+{% endblock %}

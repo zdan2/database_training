@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>スプシID</th><th>保育園名</th><th>所在地</th><th>電話</th><th>サービス</th><th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for n in items %}
+      <tr>
+        <td>{{ n.source_id }}</td>
+        <td>{{ n.name }}</td>
+        <td>{{ n.postal_code or "" }} {{ n.address or "" }}</td>
+        <td>{{ n.phone or "" }}</td>
+        <td style="white-space: pre-line">{{ n.other_services or "" }}</td>
+        <td>
+          {% if n.homepage_url %}<a href="{{ n.homepage_url }}" target="_blank">HP</a>{% endif %}
+          {% if n.guidebook_url %} | <a href="{{ n.guidebook_url }}" target="_blank">ガイド</a>{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
